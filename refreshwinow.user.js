@@ -6,6 +6,8 @@
 // @author       Ваше имя
 // @match        https://web.telegram.org/*
 // @grant        none
+// @downloadURL  https://github.com/Enotny/notpix/raw/main/refreshwinow.user.js
+// @updateURL    https://github.com/Enotny/notpix/raw/main/refreshwinow.user.js
 // ==/UserScript==
 
 (function() {
