@@ -5,9 +5,8 @@
 // @version      2.0
 // @grant        none
 // @icon         https://notpx.app/favicon.ico
-// @downloadURL  https://github.com/mudachyo/Not-Pixel/raw/main/not-autoclicker.user.js
-// @updateURL    https://github.com/mudachyo/Not-Pixel/raw/main/not-autoclicker.user.js
-// @homepage     https://github.com/mudachyo/Not-Pixel
+// @downloadURL  https://github.com/Enotny/notpix/raw/main/not-autoclicker.user.js
+// @updateURL    https://github.com/Enotny/notpix/raw/main/not-autoclicker.user.js
 // ==/UserScript==
 
 // Ожидание элемента
