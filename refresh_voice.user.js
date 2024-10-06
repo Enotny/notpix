@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Кастомный скрипт для нескольких кнопок с задержкой и случайным повторением + Музыка
+// @name         Кастомный скрипт для нескольких кнопок с задержкой и случайным повторением + Тихая музыка
 // @namespace    http://tampermonkey.net/
-// @version      1.9
+// @version      1.6
 // @description  Скрипт для работы с двумя кнопками, задержкой между нажатиями, повторением каждые 20 минут с плавающим временем и музыкой
 // @author       Ваше имя
 // @match        https://web.telegram.org/*
@@ -71,27 +71,48 @@
         setTimeout(clickButtons, randomDelay);
     }
 
-    // Функция для воспроизведения музыки
-    function playMusic() {
+    // Функция для воспроизведения тихой музыки
+    function playQuietMusic() {
         if (!audioContext) {
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
             oscillator = audioContext.createOscillator();
             gainNode = audioContext.createGain();
             oscillator.type = 'sine';
             oscillator.frequency.setValueAtTime(440, audioContext.currentTime); // Частота 440 Гц (нота A)
-            gainNode.gain.setValueAtTime(0.05, audioContext.currentTime); // Умеренный уровень громкости
+            gainNode.gain.setValueAtTime(0.001, audioContext.currentTime); // Очень тихий уровень громкости
             oscillator.connect(gainNode);
             gainNode.connect(audioContext.destination);
             oscillator.start();
-            console.log("Музыка запущена.");
+            console.log("Тихая музыка запущена.");
         } else {
             console.log("Музыка уже воспроизводится.");
         }
     }
 
-    // Первоначальный запуск функции с кнопками и музыкой
+    // Создание кнопки для ручного запуска музыки
+    function createMusicButton() {
+        const musicButton = document.createElement('button');
+        musicButton.innerText = "Запустить музыку";
+        musicButton.style.position = "fixed";
+        musicButton.style.top = "10px";
+        musicButton.style.right = "10px";
+        musicButton.style.zIndex = 1000;
+        musicButton.style.padding = "10px";
+        musicButton.style.backgroundColor = "#4CAF50";
+        musicButton.style.color = "white";
+        musicButton.style.border = "none";
+        musicButton.style.borderRadius = "5px";
+        musicButton.style.cursor = "pointer";
+        document.body.appendChild(musicButton);
+
+        musicButton.addEventListener('click', function() {
+            playQuietMusic();
+        });
+    }
+
+    // Первоначальный запуск функции с кнопками (без музыки)
     function initializeScript() {
-        playMusic(); // Запускаем музыку автоматически
+        createMusicButton(); // Создаём кнопку для запуска музыки вручную
 
         // Начинаем нажатие кнопок через паузу (например, 20 секунд)
         setTimeout(clickButtons, 20000); // Замените паузу на нужное значение
