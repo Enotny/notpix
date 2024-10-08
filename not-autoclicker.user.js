@@ -219,7 +219,7 @@ function autoClaimReward() {
   function tryClaimReward() {
       const openRewardButton = document.querySelector('button._button_tksty_1');
       if (!openRewardButton) {
-          setTimeout(tryClaimReward, 1000);
+          setTimeout(tryClaimReward, 500);
           return;
       }
       triggerEvents(openRewardButton);
@@ -239,7 +239,7 @@ function autoClaimReward() {
                   console.log(`Следующая попытка получить награду через ${nextClaimDelay / 500} секунд`);
                   setTimeout(tryClaimReward, nextClaimDelay);
               } else {
-                  setTimeout(tryClaimReward, 1000);
+                  setTimeout(tryClaimReward, 500);
               }
           }, 10000);
           return;
@@ -263,7 +263,7 @@ function autoClaimReward() {
           return;
       }
 
-      setTimeout(tryClaimReward, 1000);
+      setTimeout(tryClaimReward, 500);
   }
 
   tryClaimReward();
