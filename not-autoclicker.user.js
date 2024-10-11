@@ -217,19 +217,19 @@ function autoClaimReward() {
   }
 
   function tryClaimReward() {
-      const openRewardButton = document.querySelector('button._button_tksty_1');
+      const openRewardButton = document.querySelector('button._button_1tu7a_1');
       if (!openRewardButton) {
           setTimeout(tryClaimReward, 500);
           return;
       }
       triggerEvents(openRewardButton);
 
-      const loadingInfo = document.querySelector('div._container_3i6l4_1 > div._info_3i6l4_32');
-      const claimButton = document.querySelector('button._button_3i6l4_11');
+      const loadingInfo = document.querySelector('div._container_13oyr_1 > div._info_13oyr_32');
+      const claimButton = document.querySelector('button._button_13oyr_11');
 
       if (loadingInfo && loadingInfo.textContent === 'Loading...') {
           setTimeout(() => {
-              const loadingInfoCheck = document.querySelector('div._container_3i6l4_1 > div._info_3i6l4_32');
+              const loadingInfoCheck = document.querySelector('div._container_13oyr_1 > div._info_13oyr_32');
               if (loadingInfoCheck && loadingInfoCheck.textContent === 'Loading...') {
                   const exitButton = document.querySelector('button._button_1cryl_1');
                   if (exitButton) {
@@ -250,7 +250,7 @@ function autoClaimReward() {
           console.log('Награда получена!');
       }
 
-      const claimInInfo = document.querySelector('div._info_3i6l4_32');
+      const claimInInfo = document.querySelector('div._info_13oyr_32');
       if (claimInInfo && claimInInfo.textContent.includes('CLAIM IN')) {
           const exitButton = document.querySelector('button._button_1cryl_1');
           if (exitButton) {
